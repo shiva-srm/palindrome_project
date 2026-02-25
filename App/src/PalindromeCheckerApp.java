@@ -1,28 +1,39 @@
+import java.util.Scanner;
+
 /**
- * UC2: Print a Hardcoded Palindrome Result
- * This version uses a fixed string and checks if it's a palindrome.
+ * UC3: Palindrome Check Using String Reverse
+ * Demonstrates string reversal logic and the equals() method.
  */
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        // 1. Defining a String Literal (Stored in String Constant Pool)
-        String word = "madam";
+        Scanner scanner = new Scanner(System.in);
 
-        // 2. Logic to check for Palindrome
-        // We reverse the string to compare it with the original
-        String reversedWord = "";
+        System.out.println("--- UC3: String Reverse Palindrome Checker ---");
+        System.out.print("Enter a string: ");
+        String original = scanner.nextLine();
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversedWord += word.charAt(i);
+        // 1. Reverse the string using a for loop
+        String reversed = "";
+
+        // Starting from the last index and moving to the first
+        for (int i = original.length() - 1; i >= 0; i--) {
+            // String Concatenation: creating a new string object each time
+            reversed = reversed + original.charAt(i);
         }
 
-        System.out.println("Checking Word: " + word);
+        System.out.println("Original: " + original);
+        System.out.println("Reversed: " + reversed);
 
-        // 3. Conditional Statement (if-else) to evaluate the result
-        if (word.equals(reversedWord)) {
-            System.out.println("Result: The word is a Palindrome.");
+        //
+
+        // 2. Compare using equals()
+        if (original.equalsIgnoreCase(reversed)) {
+            System.out.println("Result: The string is a Palindrome.");
         } else {
-            System.out.println("Result: The word is NOT a Palindrome.");
+            System.out.println("Result: The string is NOT a Palindrome.");
         }
+
+        scanner.close();
     }
 }
