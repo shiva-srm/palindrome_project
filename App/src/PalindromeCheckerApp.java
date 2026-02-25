@@ -1,15 +1,16 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
- * UC4: Character Array Based Palindrome Check
- * Demonstrates the Two-Pointer technique and index-based access.
+ * UC5: Stack-Based Palindrome Checker
+ * Demonstrates the LIFO (Last-In, First-Out) principle.
  */
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("--- UC4: Character Array (Two-Pointer) Palindrome Checker ---");
+        System.out.println("--- UC5: Stack-Based Palindrome Checker ---");
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
@@ -23,27 +24,31 @@ public class PalindromeCheckerApp {
     }
 
     public static boolean isPalindrome(String input) {
-        // Clean the string: remove non-alphanumeric and lowercase
+        // Clean the string to handle cases and spaces
         String cleanInput = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
         if (cleanInput.isEmpty()) return true;
 
-        // 1. Convert String to char array
-        char[] charArray = cleanInput.toCharArray();
+        // 1. Initialize the Stack data structure
+        Stack<Character> stack = new Stack<>();
 
-        // 2. Initialize Two Pointers
-        int left = 0;                  // Start pointer
-        int right = charArray.length - 1; // End pointer
-
-        // 3. Compare characters until pointers meet in the middle
-        while (left < right) {
-            if (charArray[left] != charArray[right]) {
-                return false; // Mismatch found
-            }
-            left++;  // Move forward
-            right--; // Move backward
+        // 2. Push Operation: Insert characters into the stack
+        for (int i = 0; i < cleanInput.length(); i++) {
+            stack.push(cleanInput.charAt(i));
         }
 
-        return true; // All characters matched
+
+
+        // 3. Pop and Compare: Check characters in reverse order
+        for (int i = 0; i < cleanInput.length(); i++) {
+            char originalChar = cleanInput.charAt(i);
+            char reversedChar = stack.pop(); // Removes and returns the top element
+
+            if (originalChar != reversedChar) {
+                return false; // Mismatch found
+            }
+        }
+
+        return true; // If all characters match, it's a palindrome
     }
 }
