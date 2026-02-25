@@ -1,23 +1,28 @@
 /**
- * UC1: Application Entry & Welcome Message
- * This class serves as the entry point for the Palindrome Checker App.
+ * UC2: Print a Hardcoded Palindrome Result
+ * This version uses a fixed string and checks if it's a palindrome.
  */
 public class PalindromeCheckerApp {
 
-    // The Main method: The starting point of every Java application
     public static void main(String[] args) {
+        // 1. Defining a String Literal (Stored in String Constant Pool)
+        String word = "madam";
 
-        // Displaying Application Header
-        System.out.println("==============================================");
-        System.out.println("      Welcome to Palindrome Checker App       ");
-        System.out.println("==============================================");
+        // 2. Logic to check for Palindrome
+        // We reverse the string to compare it with the original
+        String reversedWord = "";
 
-        // Displaying Application Details
-        System.out.println("Application Name: Palindrome Checker");
-        System.out.println("Version: 1.0.0");
-        System.out.println("Status: Initialized Successfully");
-        System.out.println("----------------------------------------------");
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversedWord += word.charAt(i);
+        }
 
-        System.out.println("Ready to begin palindrome validation tasks.");
+        System.out.println("Checking Word: " + word);
+
+        // 3. Conditional Statement (if-else) to evaluate the result
+        if (word.equals(reversedWord)) {
+            System.out.println("Result: The word is a Palindrome.");
+        } else {
+            System.out.println("Result: The word is NOT a Palindrome.");
+        }
     }
 }
